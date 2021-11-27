@@ -21,7 +21,7 @@ function Sidebar() {
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
-      spotifyApi.getUserPlaylists(session?.user.username).then((data) => {
+      spotifyApi.getUserPlaylists().then((data) => {
         setPlaylists(data.body.items);
       });
     }

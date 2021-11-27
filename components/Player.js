@@ -33,17 +33,15 @@ function Player() {
 
   const fetchCurrentSong = () => {
     if (!songInfo) {
-      spotifyApi
-        .getMyCurrentPlayingTrack(session?.user.username)
-        .then((data) => {
-          console.log("Now playing: ", data.body?.item);
-          setCurrentIdTrack(data.body?.item?.id);
+      spotifyApi.getMyCurrentPlayingTrack().then((data) => {
+        console.log("Now playing: ", data.body?.item);
+        setCurrentIdTrack(data.body?.item?.id);
 
-          spotifyApi
-            .getMyCurrentPlaybackState()
-            .then((data) => setIsPlaying(data.body?.is_playing))
-            .catch(() => {});
-        });
+        spotifyApi
+          .getMyCurrentPlaybackState()
+          .then((data) => setIsPlaying(data.body?.is_playing))
+          .catch(() => {});
+      });
     }
   };
 
